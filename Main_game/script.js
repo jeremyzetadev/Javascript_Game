@@ -50,6 +50,12 @@ animationStates.forEach((state, index)=>{
     spriteAnimations[state.name] = frames;
 })
 
+// console.log(animationStates);
+// console.log(Object.keys(spriteAnimations).length);
+// for(i=0; i<Object.keys(spriteAnimations).length; i++){
+//     console.log(spriteAnimations[Object.keys(spriteAnimations)[i]]);
+// }
+
 let playerState = 'idle';
 const dropDown = document.getElementById('animations');
 dropDown.addEventListener('change', function(e){
