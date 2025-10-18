@@ -35,7 +35,16 @@ class ThickLine{
         ctx.fillStyle = 'black';
         ctx.beginPath();
         ctx.moveTo(this.xpos, this.ypos);
-        ctx.lineTo(this.xpos+targetx, this.ypos+targety);
+        // ctx.lineTo(this.xpos+targetx, this.ypos+targety);
+
+        // for specific length only
+        const dist_x = targetx-this.xpos;
+        const dist_y = targety-this.ypos;
+        const dist_r = Math.sqrt((dist_x*dist_x) + (dist_y*dist_y));
+        const x_line = (dist_x/dist_r)*this.len;
+        const y_line = (dist_y/dist_r)*this.len;
+        ctx.lineTo(this.xpos+x_line, this.ypos+y_line);
+
         ctx.stroke();
     }
 }
