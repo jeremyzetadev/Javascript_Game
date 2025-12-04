@@ -50,23 +50,38 @@ ctx.lineWidth = 10;
 
 const numberOfEnemies = 25;
 const enemyArray = [];
+let gameFrame = 0;
 
 class Enemy {
     constructor(){
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+        this.image = new Image();
+        this.image.src = 'enemy1.png';
+        this.speed = Math.random() * 4 -2;
+        this.spriteWidth = 256;
+        this.spriteHeight = 256; 
         this.width = 100;
         this.height = 100;
-        this.speed = Math.random() * 4 -2;
+        // this.width = this.spriteWidth / 2.5;  // for spriteanimation
+        // this.height = this.spriteHeight / 2.5; // for spriteanimation
+        this.x = Math.random() * (canvas.width - this.width);
+        this.y = Math.random() * (canvas.height - this.height);
+        this.frame = 0;
     }
 
     update(){
-        this.x += this.speed;
-        this.y += this.speed;
+        this.x += Math.random()*5 - 2.5;
+        this.y += Math.random()*5 - 2.5;
+
+        // animate sprites
+        // if(gameFrame%2==0) // to make it slower by 2 // for spriteanimation
+        //     this.frame > 4 ? this.frame =0 : this.frame++;  // for spriteanimation
     }
     
     draw(){
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        // ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.strokeRect(this.x, this.y, this.width, this.height);
+        ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+        // ctx.drawImage(enemyImage, this.frame*this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height); //for spriteanimation
     }
 }
 
@@ -79,6 +94,7 @@ function animate(){
         enemy.update();
         enemy.draw();
     });
+    gameFrame++;
     requestAnimationFrame(animate);
 }
 animate();
