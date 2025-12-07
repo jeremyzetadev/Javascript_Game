@@ -1,0 +1,14 @@
+#canvas1{
+    border: 3px solid black;
+    position: absolute;
+    height: 800px;
+    width: 600px;
+    background-color: lightgreen;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+img{
+    display: none;
+}
